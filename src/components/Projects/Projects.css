@@ -1,13 +1,12 @@
 .heading-text{
-    margin-bottom: 40px !important;
-    margin-top: 150px !important;
+    margin-bottom: 50px !important;
+    margin-top: 80px !important;
     color: black;   
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
-    font-size: 3rem;
-    
+    font-size: 3rem; 
 }
 
 h1{

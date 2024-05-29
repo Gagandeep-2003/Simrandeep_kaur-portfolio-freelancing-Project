@@ -1,7 +1,13 @@
 .heading-text{
-    margin-bottom: 50px;
-    margin-top: 150px;
+    margin-bottom: 40px !important;
+    margin-top: 150px !important;
     color: black;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 3rem;
+    
 }
 
 h1{
@@ -98,7 +104,7 @@ h1{
 }
 
 @media (max-width: 576px) {
-    .head-text {
+    .heading-text {
         font-size: 1.5em;
     }
 

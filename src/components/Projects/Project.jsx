@@ -14,7 +14,7 @@ const Project = ({ title }) => (
 const ProjectList = () => {
   return (
   <>
-      <h2 className="heading-text">
+      <h2 className="heading-text" id="projects">
         Projects
       </h2>
     <div id="page14">

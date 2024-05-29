@@ -1,0 +1,241 @@
+.app__work {
+  padding-top: 6rem;
+  text-align: center;
+}
+
+.app__work-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 4rem auto 2rem auto;
+}
+
+.app__work-filter-item {
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  color: #000;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__work-filter-item:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.btn {
+  width: 140px;
+  height: 50px;
+  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin: 20px auto; /* Center the button horizontally */
+  font-size: 16px;
+  background: linear-gradient(45deg, #f17c58, #e94584, #24aadb, #27dbb1, #ffdc18, #ff3706);
+  background-size: 600% 100%;
+  animation: gradient 7s linear infinite;
+  animation-direction: alternate;
+}
+
+.btn span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+}
+
+.btn-text-one {
+  position: absolute;
+  font-weight: 800;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  font-weight: 800;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}
+
+
+@media (min-width: 2000px) {
+  .app__work-filter-item {
+    padding: 1rem 2rem;
+    border-radius: 0.85rem;
+  }
+}
+
+.item-active {
+  background-color: var(--secondary-color);
+  color: #fff;
+  transform: scale(1.02) translateY(-3px);
+  box-shadow: 5px 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.app__work-portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.app__work-item {
+  width: 270px !important;
+  max-height: 430px !important;
+  flex-direction: column !important;
+  margin: 2rem !important;
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  transition: all 0.3s ease;
+}
+
+.app__work-item:hover {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 2000px) {
+  .app__work-item {
+    width: 470px;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .app__work-item {
+    width: 100%;
+    margin: 1rem;
+  }
+}
+
+.app__work-portfolio.onMobile .app__work-hover {
+  bottom: 0;
+  right: 0;
+  top: unset;
+  left: unset;
+  opacity: 1;
+  width: fit-content;
+  height: fit-content;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.5rem 0 0 0;
+}
+
+.app__work-portfolio.onMobile .app__work-hover div {
+  width: 30px;
+  height: 30px;
+  margin: 0.2rem;
+}
+
+.app__work-img {
+  width: 100%;
+  height: 230px;
+  position: relative;
+}
+
+.app__work-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 2000px) {
+  .app__work-img {
+    height: 350px;
+  }
+}
+
+.app__work-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.app__work-hover div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  margin: 1rem;
+  font-family: var(--font-base);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.app__work-hover div svg {
+  width: 50%;
+  height: 50%;
+  color: var(-white-color);
+}
+
+.app__work-content {
+  padding: 0.5rem;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+}
+
+.app__work-content h4 {
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.app__work-tag {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: #fafafa;
+  top: -25px;
+}
+
+.app__work-tag.highlight {
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(45deg, #f17c58, #e94584, #24aadb, #27dbb1, #ffdc18, #ff3706);
+  background-size: 600% 100%;
+  animation: gradient 7s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}

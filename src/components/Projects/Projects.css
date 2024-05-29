@@ -1,0 +1,59 @@
+.head-text{
+    margin-bottom: 50px;
+    margin-top: 150px;
+    color: black;   
+}
+
+h1{
+    color: white;
+}
+
+#page14{
+    /* position: relative; */
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+}
+
+.page14-inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw 5vw;
+    height: 33.3%;
+    width: 100%;
+    color: #fff;
+    border-top: .5px solid #ffffff5c;
+    border-bottom: .5px solid #ffffff48;
+}
+/* .i{
+    color: #fff;
+    font-weight: 100;
+    font-size: 2.4vw;
+    position: relative;
+    z-index: 9999;
+} */
+
+.page14-inner>h1{
+    font-size: 1.7vw;
+    font-weight: 100;
+    position: relative;
+    z-index: 9999;
+}
+
+.center14{
+    height: 0%;
+    width: 100%;
+    background-color: #0a3cce;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    transition: all ease .5s;
+}
+
+
+.page14-inner:hover .center14{
+    height: 100%;
+}

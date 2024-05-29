@@ -1,0 +1,209 @@
+.app__footer-cards {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 4em auto 2rem auto;
+}
+
+.app__footer-card {
+  min-width: 330px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: copy;
+  background-color: #fef4f5;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__footer-card img {
+  width: 40px;
+  height: 40px;
+  margin: 0 0.7rem;
+}
+
+.app__footer-card p {
+  font-weight: 500;
+}
+
+.app__footer-card a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app__footer-card:hover {
+  box-shadow: 0 0 25px #fef4f5;
+}
+
+.app__footer-card h6 {
+  z-index: 3;
+}
+
+.app__footer-card h4 {
+  position: absolute;
+  top: -0;
+  right: 0;
+  font-size: 0.8rem;
+  color: #555;
+  background: #fff;
+  padding: 0.2rem 0.6rem;
+  border-bottom-left-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .app__footer-card h4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__footer-card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app__footer-cards {
+    width: 100%;
+  }
+
+  #tooltip {
+    display: none;
+  }
+
+  #tooltip:active {
+    background: transparent;
+  }
+}
+
+.app__footer-cards .app__footer-card:last-child {
+  background-color: #f2f7fb;
+}
+
+.app__footer-cards .app__footer-card:last-child:hover {
+  box-shadow: 0 0 25px #f2f7fb;
+}
+
+.app__footer-form {
+  width: 52%;
+  flex-direction: column;
+  margin: 1rem auto;
+  gap: 1rem;
+}
+
+.app__footer-form div {
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.app__footer-form div input,
+.app__footer-form div textarea {
+  outline: none;
+  resize: none;
+  border: none;
+  width: 100%;
+  max-width: 90vw;
+  border-bottom: 2px solid #bababa;
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  background: #f2f7fb;
+  margin: 0.4rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.4rem 0.4rem 0.1rem 0.1rem;
+  transition: 0.3s ease;
+}
+
+.app__footer-form div input:focus,
+.app__footer-form div textarea:focus {
+  border-color: var(--secondary-color);
+}
+
+.app__footer-form div textarea {
+  height: 170px;
+}
+
+.app__footer-form button {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--secondary-color);
+  font-weight: 500;
+  color: var(--white-color);
+  outline: none;
+  margin: 2rem 0 0 0;
+  font-family: var(--font-base);
+  transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  cursor: pointer;
+}
+
+.app__footer-form button:hover {
+  background-color: #2430af;
+}
+
+@media screen and (max-width: 768px) {
+  .app__footer-form {
+    width: 90%;
+  }
+}
+
+.btn-copy {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.btn-copy p {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-copy p.active {
+  transform: translateY(90%);
+}
+
+.btn-copy span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-188%);
+  font-weight: 600;
+  transition: 0.4s;
+}
+
+.btn-copy span.active {
+  transform: translateY(-50%);
+}
+
+lottie-player {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 240px;
+  z-index: 6;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #555; 
+  text-align: center;
+  margin-top: 20px; 
+}

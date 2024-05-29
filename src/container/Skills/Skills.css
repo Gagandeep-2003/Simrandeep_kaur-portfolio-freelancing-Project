@@ -1,0 +1,86 @@
+.app__skills {
+  padding-top: 6rem;
+}
+
+.app__skills-container {
+  width: 80%;
+  margin: 4rem auto;
+}
+
+@media screen and (max-width: 900px) {
+  .app__skills-container {
+    width: 100%;
+    margin: 3rem auto;
+  }
+}
+
+.app__skills-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .app__skills-list {
+    margin-right: 0;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.app__skills-item {
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__skills-item div {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #fef4f5;
+  transition: 0.2s ease;
+}
+
+.app__skills-item div img {
+  width: 50%;
+  height: 50%;
+}
+
+.app__skills-item div:hover {
+  transform: scale(1.08) translateY(-0.2rem);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 2000px) {
+  .app__skills-item div {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__skills-item div {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.app__skills-item p {
+  font-weight: 500;
+  margin-top: 0.5rem; 
+}
+
+@media screen and (min-width: 2000px) {
+  .app__skills-item {
+    margin: 1rem 2rem;
+  }
+
+  .app__skills-item p {
+    margin-top: 1rem;
+  }
+}

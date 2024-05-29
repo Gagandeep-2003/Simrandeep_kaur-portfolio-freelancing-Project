@@ -62,7 +62,6 @@ h1{
 .page14-inner:hover .center14{
     height: 100%;
 }
-
 /* Responsive styles */
 @media (max-width: 1200px) {
     .page14-inner > h2 {
@@ -94,7 +93,7 @@ h1{
     }
 
     .page14-inner > h2 {
-        font-size: 1.2em;
+        font-size: 32px;
     }
 
     .page14-inner > p {
@@ -104,7 +103,7 @@ h1{
 
 @media (max-width: 576px) {
     .heading-text {
-        font-size: 1.5em;
+        font-size: 32px;
     }
 
     .page14-inner {

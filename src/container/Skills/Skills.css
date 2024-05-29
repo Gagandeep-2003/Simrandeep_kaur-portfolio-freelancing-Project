@@ -68,6 +68,9 @@
     width: 70px;
     height: 70px;
   }
+  .app__skills{
+    margin-top: -5rem;
+  }
 }
 
 .app__skills-item p {
@@ -82,5 +85,9 @@
 
   .app__skills-item p {
     margin-top: 1rem;
+  }
+
+  .app__skills{
+    margin-top: -6rem;
   }
 }

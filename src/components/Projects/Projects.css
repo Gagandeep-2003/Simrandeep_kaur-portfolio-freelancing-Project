@@ -57,3 +57,60 @@ h1{
 .page14-inner:hover .center14{
     height: 100%;
 }
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .page14-inner > h2 {
+        font-size: 1.4em;
+    }
+
+    .page14-inner > p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 992px) {
+    .page14-inner {
+        padding: 15px;
+    }
+
+    .page14-inner > h2 {
+        font-size: 1.3em;
+    }
+
+    .page14-inner > p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    .page14-inner {
+        padding: 10px;
+    }
+
+    .page14-inner > h2 {
+        font-size: 1.2em;
+    }
+
+    .page14-inner > p {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 576px) {
+    .head-text {
+        font-size: 1.5em;
+    }
+
+    .page14-inner {
+        padding: 8px;
+    }
+
+    .page14-inner > h2 {
+        font-size: 1.1em;
+    }
+
+    .page14-inner > p {
+        font-size: 0.8em;
+    }
+}

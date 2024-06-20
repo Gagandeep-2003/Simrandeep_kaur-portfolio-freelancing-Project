@@ -160,3 +160,23 @@
     display: none;
   }
 }
+
+
+#svg {
+  height: 30px;
+  width: 30px;
+  stroke: rgb(0, 0, 0);
+  fill-opacity: 0;
+  stroke-width: 20px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 4500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

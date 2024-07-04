@@ -25,7 +25,7 @@ const HeroCenter = () => {
         </h3>
         
         <img 
-          src={images.leaf3}
+          src={images.leaf1}
           alt="leaf image of orange color"
         />
       </motion.div>

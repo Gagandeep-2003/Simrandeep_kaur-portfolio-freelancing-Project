@@ -19,6 +19,7 @@
     height: auto;
     width: 100%;
     background-color: #000;
+    margin-bottom: 4rem; /* Added base margin-bottom for spacing */
   }
   
   .page14-inner {
@@ -62,22 +63,22 @@
   /* Subtitle Styles */
   .subtitle {
     position: absolute;
-    top: -100%; /* Start above the div */
-    right: 1vw; /* Positioned near the right edge */
+    top: -100%;
+    right: 1vw;
     font-size: 1vw;
     font-weight: 300;
     color: #fff;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-    padding: 4px 8px; /* Small padding for visibility */
-    border-radius: 4px; /* Rounded corners */
-    opacity: 0; /* Hidden by default */
-    transition: top 0.5s ease, opacity 0.3s ease; /* Smooth slide and fade */
-    z-index: 3; /* Above background and title */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: top 0.5s ease, opacity 0.3s ease;
+    z-index: 3;
   }
   
   .page14-inner:hover .subtitle {
-    top: 5px; /* Slide down to top-right corner */
-    opacity: 1; /* Fade in */
+    top: 5px;
+    opacity: 1;
   }
   
   /* Responsive Styles */
@@ -145,30 +146,35 @@
   
   @media (max-width: 576px) {
     .heading-text {
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-top: 40px;
       margin-bottom: 30px;
     }
   
+    #page14 {
+      margin-bottom: 6rem; /* Increased margin-bottom for mobile */
+    }
+  
     .page14-inner {
-      padding: 8px 1.5vw;
-      min-height: 60px;
-      flex-direction: column; /* Stack vertically on mobile */
+      padding: 12px 2vw;
+      min-height: 90px;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
   
     .page14-inner > h1 {
-      font-size: 4vw;
+      font-size: 6vw;
     }
   
     .subtitle {
-      font-size: 3vw;
-      right: 1vw;
-      top: -50%; /* Adjust starting position for smaller height */
+      font-size: 4vw;
+      right: 2vw;
+      top: -50%;
+      padding: 6px 10px;
     }
   
     .page14-inner:hover .subtitle {
-      top: 5px; /* Same slide-in position */
+      top: 8px;
     }
-  }     
+  }

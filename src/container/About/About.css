@@ -1,3 +1,4 @@
+/* Base Styles */
 .app__about {
   flex: 1;
   width: 100%;
@@ -31,6 +32,7 @@
   object-fit: cover;
 }
 
+/* Larger Screens */
 @media screen and (min-width: 2000px) {
   .app__profile-item {
     width: 370px;
@@ -39,5 +41,37 @@
 
   .app__profile-item img {
     height: 320px;
+  }
+}
+
+/* Mobile View (Increase Card Size) */
+@media screen and (max-width: 576px) {
+  .app__profile-item {
+    width: 280px; /* Increased from 190px for better visibility */
+    margin: 1.5rem; /* Slightly reduced margin to fit larger cards */
+  }
+
+  .app__profile-item img {
+    height: 220px; /* Increased height to match larger width */
+  }
+
+  .bold-text {
+    font-size: 1.2rem; /* Slightly larger title for readability */
+  }
+
+  .p-text {
+    font-size: 0.9rem; /* Slightly larger description text */
+  }
+}
+
+/* Intermediate Screens (Optional for smoother scaling) */
+@media screen and (max-width: 768px) and (min-width: 577px) {
+  .app__profile-item {
+    width: 220px; /* Slightly larger than default for tablets */
+    margin: 1.5rem;
+  }
+
+  .app__profile-item img {
+    height: 180px;
   }
 }

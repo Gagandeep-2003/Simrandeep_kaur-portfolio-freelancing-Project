@@ -47,7 +47,7 @@ const MainContent = () => {
     // Import skills and projects data
     const fetchData = async () => {
       try {
-        const skillsModule = await import('./data/skills-Data');
+        const skillsModule = await import('./data/skillsData');
         const projectsModule = await import('./data/projectsData');
         
         // Check if data is available and set state

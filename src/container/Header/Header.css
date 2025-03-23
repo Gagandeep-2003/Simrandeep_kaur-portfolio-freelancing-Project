@@ -124,7 +124,7 @@
   position: absolute;
   text-align: center;
   font-family: "Anton", sans-serif;
-  font-size: 6vw;
+  font-size: 9.5vw;
   opacity: 0.9;
   transition: 0.3s ease-in-out;
 }
@@ -133,7 +133,7 @@
   .creative h1,
   .creative h2,
   .creative h3 {
-    font-size: 6vw;
+    font-size: 9.5vw;
   }
 }
 

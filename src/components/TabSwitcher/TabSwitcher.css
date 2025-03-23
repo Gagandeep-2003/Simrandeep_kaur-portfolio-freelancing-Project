@@ -1,1 +1,363 @@
 
+.tab-switcher-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.tab-preview-container {
+  display: flex;
+  max-width: 90%;
+  overflow-x: auto;
+  padding: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 20px;
+  perspective: 1000px;
+}
+
+.tab-preview-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-preview {
+  min-width: 320px;
+  max-width: 320px;
+  height: 240px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.1));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform: scale(0.85) rotateY(10deg);
+  opacity: 0.7;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.tab-preview:hover {
+  transform: scale(0.95) rotateY(0deg);
+  opacity: 0.9;
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2),
+    0 20px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-preview.active {
+  transform: scale(1) rotateY(0deg);
+  opacity: 1;
+  border-color: var(--secondary-color);
+  box-shadow: 0 30px 50px -5px rgba(0, 0, 0, 0.2),
+    0 20px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-preview-header {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tab-preview-content {
+  padding: 16px;
+  height: calc(100% - 45px);
+  overflow: hidden;
+}
+
+.tab-preview-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4b5563;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.shortcut-hint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(31, 41, 55, 0.9);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  z-index: 9999;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.keyboard-shortcut {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin: 0 2px;
+  font-weight: 600;
+}
+
+.shortcut-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--secondary-color);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  z-index: 9998;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.shortcut-button:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-color);
+}
+
+.shortcut-button-text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.tooltip-text {
+  position: absolute;
+  right: 70px;
+  background-color: rgba(31, 41, 55, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.shortcut-button:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Improved Help icon and popup styles */
+.help-icon-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9998;
+}
+
+.help-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.help-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.help-icon:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.help-icon:hover::before {
+  opacity: 1;
+}
+
+/* Updated Help popup styles */
+.help-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.help-popup-content {
+  background-color: rgba(20, 20, 25, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.help-popup-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help-popup-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.help-popup-body {
+  padding: 10px 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.help-shortcut-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.help-shortcut-item:last-child {
+  border-bottom: none;
+}
+
+.help-shortcut-item strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  width: 40%;
+  font-size: 0.9rem;
+}
+
+.shortcut-key-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.help-popup-body .keyboard-shortcut {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+}
+
+.help-popup-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.close-help-button {
+  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close-help-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-help-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .help-popup-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .help-shortcut-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .help-shortcut-item strong {
+    width: 100%;
+  }
+}
+
+/* Continue with the rest of your CSS... */ 

@@ -4,5 +4,4 @@ export { default as TabSwitcher } from "./TabSwitcher/TabSwitcher";
 export { default as SpotlightSearch } from "./SpotlightSearch/SpotlightSearch";
 export { default as TabTitleChanger } from "./TabTitleChanger/TabTitleChanger";
 export { default as ShortcutPopup } from "./ShortcutPopup/ShortcutPopup";
-export { default as PWAInstallPrompt } from "./PWAInstallPrompt/PWAInstallPrompt";
 export { default as CustomCursor } from "./CustomCursor/CustomCursor";

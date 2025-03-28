@@ -1,10 +1,11 @@
 import "./App.css";
 import { Header, About, Work, Skills, Footer } from "./container";
-import { Navbar, TabSwitcher, SpotlightSearch, TabTitleChanger } from "./components";
+import { Navbar, TabSwitcher, SpotlightSearch, TabTitleChanger, CustomCursor } from "./components";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import Project from "./components/Projects/Project";
 import LoadingAnimation from "./components/LoadingAnimation/LoadingAnimation";
 import ShortcutPopup from "./components/ShortcutPopup/ShortcutPopup";
+import PWAInstallPrompt from "./components/PWAInstallPrompt/PWAInstallPrompt";
 import { useState, useEffect } from "react";
 
 const MainContent = () => {
@@ -104,6 +105,7 @@ const App = () => {
 
   return (
     <>
+      <CustomCursor />
       {isLoading ? (
         <LoadingAnimation onComplete={handleLoadingComplete} />
       ) : (
@@ -122,6 +124,7 @@ const App = () => {
           >
             <MainContent />
           </ReactLenis>
+          <PWAInstallPrompt />
         </>
       )}
     </>

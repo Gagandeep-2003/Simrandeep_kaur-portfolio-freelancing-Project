@@ -162,39 +162,39 @@ const LoadingAnimation = ({ onComplete }) => {
     document.addEventListener('mouseup', handleMouseUp);
 
     mainTimeline
-      .to('.loading-label', { opacity: 1, duration: 1, ease: 'power2.inOut' })
-      .to('.grid-lines', { opacity: 0.15, duration: 1.5, ease: 'power2.inOut' }, '<0.5')
-      .to('.lens-flare', { opacity: 0.8, scale: 1, duration: 1, ease: 'power2.out' }, '<0.3')
-      .to('.lens-flare', { opacity: 0, scale: 0.5, duration: 0.7, ease: 'power2.in' }, '>')
+      .to('.loading-label', { opacity: 1, duration: 0.5, ease: 'power2.inOut' })
+      .to('.grid-lines', { opacity: 0.15, duration: 0.7, ease: 'power2.inOut' }, '<0.3')
+      .to('.lens-flare', { opacity: 0.8, scale: 1, duration: 0.5, ease: 'power2.out' }, '<0.2')
+      .to('.lens-flare', { opacity: 0, scale: 0.5, duration: 0.3, ease: 'power2.in' }, '>')
       .to('.loading-label', {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: 'power2.in',
         onComplete: () => document.querySelector('.loading-label').textContent = 'LOCATING SPECIMEN'
       })
-      .to('.loading-label', { opacity: 1, duration: 0.5, ease: 'power2.out' })
-      .to('.measuring-line', { width: 100, duration: 1, ease: 'power2.inOut' }, '<0.5')
-      .to('.measuring-label', { opacity: 1, duration: 0.5, ease: 'power2.out' }, '>-0.5')
-      .to('.main-cell', { opacity: 1, scale: 1, duration: 2, ease: 'elastic.out(1, 0.5)' }, '>')
-      .to('.cell-nucleus', { scale: 1, duration: 1.5, ease: 'elastic.out(1, 0.5)' }, '<0.5')
-      .to(additionalCells, { opacity: 1, scale: 1, duration: 1.5, stagger: 0.2, ease: 'elastic.out(1, 0.5)' }, '<0.5')
+      .to('.loading-label', { opacity: 1, duration: 0.3, ease: 'power2.out' })
+      .to('.measuring-line', { width: 100, duration: 0.5, ease: 'power2.inOut' }, '<0.3')
+      .to('.measuring-label', { opacity: 1, duration: 0.3, ease: 'power2.out' }, '>-0.3')
+      .to('.main-cell', { opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.5)' }, '>')
+      .to('.cell-nucleus', { scale: 1, duration: 0.7, ease: 'elastic.out(1, 0.5)' }, '<0.3')
+      .to(additionalCells, { opacity: 1, scale: 1, duration: 0.7, stagger: 0.1, ease: 'elastic.out(1, 0.5)' }, '<0.3')
       .to('.loading-label', {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: 'power2.in',
         onComplete: () => document.querySelector('.loading-label').textContent = 'SPECIMEN ACQUIRED'
       })
-      .to('.loading-label', { opacity: 1, duration: 0.5, ease: 'power2.out' })
-      .to('.loading-text', { opacity: 1, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(pathogens, { opacity: 1, stagger: { each: 0.1, from: 'random' }, duration: 0.7, ease: 'power2.out' }, '>')
-      .to(spores, { opacity: 0.8, stagger: { each: 0.05, from: 'random' }, duration: 0.5, ease: 'power2.out' }, '<0.3')
+      .to('.loading-label', { opacity: 1, duration: 0.3, ease: 'power2.out' })
+      .to('.loading-text', { opacity: 1, duration: 0.5, ease: 'power2.inOut' }, '<')
+      .to(pathogens, { opacity: 1, stagger: { each: 0.05, from: 'random' }, duration: 0.4, ease: 'power2.out' }, '>')
+      .to(spores, { opacity: 0.8, stagger: { each: 0.02, from: 'random' }, duration: 0.3, ease: 'power2.out' }, '<0.2')
       .to('.loading-text', {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: 'power2.in',
         onComplete: () => document.querySelector('.loading-text').textContent = 'PATHOGEN DETECTED'
-      }, '+=1')
-      .to('.loading-text', { opacity: 1, duration: 0.5, ease: 'power2.out', color: '#d62828' })
+      }, '+=0.5')
+      .to('.loading-text', { opacity: 1, duration: 0.3, ease: 'power2.out', color: '#d62828' })
       .call(() => {
         defenseProteins.forEach((protein, index) => {
           const sourceAngle = Math.random() * Math.PI * 2;
@@ -206,36 +206,36 @@ const LoadingAnimation = ({ onComplete }) => {
           const targetY = ((targetRect.top + targetRect.height/2) - (circleRect.top + circleRect.height/2)) / circleRect.height * 100 + 50;
           
           gsap.timeline()
-            .to(protein, { opacity: 1, duration: 0.5, delay: index * 0.1 })
-            .to(protein, { left: `${targetX}%`, top: `${targetY}%`, duration: 1.5, ease: 'power1.inOut' })
-            .to(protein, { opacity: 0, duration: 0.3 });
+            .to(protein, { opacity: 1, duration: 0.3, delay: index * 0.05 })
+            .to(protein, { left: `${targetX}%`, top: `${targetY}%`, duration: 0.8, ease: 'power1.inOut' })
+            .to(protein, { opacity: 0, duration: 0.2 });
         });
       })
-      .to('.loading-text', { opacity: 0, duration: 0.5, ease: 'power2.in' }, '+=2')
-      .to('.loading-label', { opacity: 0, duration: 0.5, ease: 'power2.in' }, '<')
+      .to('.loading-text', { opacity: 0, duration: 0.3, ease: 'power2.in' }, '+=0.8')
+      .to('.loading-label', { opacity: 0, duration: 0.3, ease: 'power2.in' }, '<')
       .to('.loading-text', {
         text: 'ANALYSIS COMPLETE',
         color: '#4895ef',
         opacity: 1,
-        duration: 0.5,
+        duration: 0.3,
         ease: 'power2.out'
-      }, '+=0.5')
+      }, '+=0.3')
       .to(['.microscope-circle', '.loading-text', '.loading-label', '.scope-overlay'], {
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
         ease: 'power2.inOut'
-      }, '+=1')
+      }, '+=0.5')
       .call(() => { cursor.style.display = 'none'; });
 
     const createCellActivity = () => {
-      gsap.to('.cell-nucleus', { scale: '+=0.05', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.to('.cell-nucleus', { scale: '+=0.05', duration: 1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
       gsap.to('.plant-cell', {
         background: 'radial-gradient(circle, rgba(140, 216, 103, 0.4) 0%, rgba(80, 200, 120, 0.2) 70%)',
-        duration: 3,
+        duration: 1.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
-        stagger: { each: 0.5, from: 'random' }
+        stagger: { each: 0.3, from: 'random' }
       });
     };
 
@@ -244,11 +244,11 @@ const LoadingAnimation = ({ onComplete }) => {
         x: '+=10',
         y: '+=10',
         rotation: '+=30',
-        duration: 4,
+        duration: 2,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
-        stagger: { each: 0.3, from: 'random' }
+        stagger: { each: 0.2, from: 'random' }
       });
     };
 
@@ -256,11 +256,11 @@ const LoadingAnimation = ({ onComplete }) => {
       gsap.to(spores, {
         x: '+=5',
         y: '+=5',
-        duration: 3,
+        duration: 1.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
-        stagger: { each: 0.1, from: 'random' }
+        stagger: { each: 0.05, from: 'random' }
       });
     };
 

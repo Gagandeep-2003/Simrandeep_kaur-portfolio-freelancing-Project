@@ -1,0 +1,710 @@
+/* Hide default cursor */
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+/* Base styling for all cursor elements */
+.custom-cursor,
+.custom-cursor-follower,
+.cursor-leaf,
+.cursor-trail,
+.plant-growth,
+.particles,
+.particle,
+.flower,
+.petal,
+.stem,
+.leaf,
+.stem-details,
+.stem-segment,
+.dewdrops,
+.dewdrop,
+.light-effect {
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Primary cursor dot */
+.custom-cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(145deg, rgba(76, 175, 80, 0.9), rgba(139, 195, 74, 0.9));
+  border-radius: 50%;
+  z-index: 9999;
+  backface-visibility: hidden;
+  transition: width 0.2s, height 0.2s, background 0.3s, opacity 0.2s;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.7), inset 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Trailing effect dots */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(139, 195, 74, 0.5) 0%, rgba(139, 195, 74, 0) 70%);
+  border-radius: 50%;
+  z-index: 9995;
+  backface-visibility: hidden;
+}
+
+/* Secondary cursor follower (larger ring) */
+.custom-cursor-follower {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2.5px solid rgba(76, 175, 80, 0.5);
+  border-radius: 50%;
+  z-index: 9998;
+  backface-visibility: hidden;
+  filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.4));
+  backdrop-filter: blur(1px);
+}
+
+/* Leaf cursor element */
+.cursor-leaf {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  z-index: 9997;
+  opacity: 0;
+  backface-visibility: hidden;
+}
+
+.leaf-svg {
+  width: 100%;
+  height: 100%;
+  fill: url(#leafGradient);
+  filter: drop-shadow(0px 0px 4px rgba(76, 175, 80, 0.5));
+  transform-origin: center;
+  animation: leafSway 3s infinite alternate ease-in-out;
+}
+
+/* Add SVG gradient definition to the HTML */
+.leaf-svg::before {
+  content: "";
+  background: radial-gradient(circle, rgba(139, 195, 74, 1) 0%, rgba(76, 175, 80, 1) 100%);
+}
+
+/* Plant growth effect on click */
+.plant-growth {
+  position: fixed;
+  width: 90px;
+  height: 140px;
+  z-index: 9990;
+  opacity: 0;
+  transform-origin: bottom center;
+  animation: fadeInOut 3.5s ease-out forwards;
+}
+
+.plant-growth.active {
+  opacity: 1;
+}
+
+/* Light effect around the plant */
+.light-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at center 70%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: lightGrow 2s ease-out forwards;
+}
+
+/* Stem variations by color */
+.stem {
+  position: absolute;
+  width: 4px;
+  height: 0;
+  bottom: 0;
+  left: calc(50% - 2px);
+  border-radius: 2px;
+  animation: growStem 1.2s ease-out forwards;
+  transform-origin: bottom center;
+}
+
+.stem-green {
+  background: linear-gradient(to top, #2E7D32, #8BC34A);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.stem-purple {
+  background: linear-gradient(to top, #4A148C, #7E57C2);
+  box-shadow: 0 0 8px rgba(126, 87, 194, 0.6);
+}
+
+.stem-teal {
+  background: linear-gradient(to top, #00695C, #4DB6AC);
+  box-shadow: 0 0 8px rgba(77, 182, 172, 0.6);
+}
+
+.stem-brown {
+  background: linear-gradient(to top, #5D4037, #8D6E63);
+  box-shadow: 0 0 8px rgba(93, 64, 55, 0.6);
+}
+
+/* Stem details (segments/nodes) */
+.stem-details {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.stem-segment {
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  left: calc(50% - 3px);
+  opacity: 0;
+  transform: scale(0);
+}
+
+.segment-1 {
+  top: 70%;
+  animation: showSegment 0.3s 0.6s forwards;
+}
+
+.segment-2 {
+  top: 45%;
+  animation: showSegment 0.3s 0.8s forwards;
+}
+
+.segment-3 {
+  top: 25%;
+  animation: showSegment 0.3s 1s forwards;
+}
+
+/* Leaf styles and variations */
+.leaf {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0;
+  transform-origin: bottom center;
+  box-shadow: 0 0 8px rgba(139, 195, 74, 0.5);
+}
+
+/* Different leaf colors */
+.leaf-green {
+  background: linear-gradient(145deg, #8BC34A, #4CAF50);
+  box-shadow: 0 0 8px rgba(139, 195, 74, 0.5);
+}
+
+.leaf-dark-green {
+  background: linear-gradient(145deg, #558B2F, #33691E);
+  box-shadow: 0 0 8px rgba(85, 139, 47, 0.5);
+}
+
+.leaf-teal {
+  background: linear-gradient(145deg, #4DB6AC, #00897B);
+  box-shadow: 0 0 8px rgba(77, 182, 172, 0.5);
+}
+
+.leaf-orange {
+  background: linear-gradient(145deg, #FF9800, #F57C00);
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+}
+
+/* Leaf positions */
+.leaf-left {
+  left: -18px;
+  top: 45px;
+  transform: rotate(-45deg) scale(0);
+  animation: growLeaf 0.8s 0.3s ease-out forwards;
+}
+
+.leaf-right {
+  right: -18px;
+  top: 35px;
+  transform: rotate(45deg) scale(0);
+  animation: growLeaf 0.8s 0.4s ease-out forwards;
+}
+
+.leaf-top {
+  left: -10px;
+  top: 20px;
+  transform: rotate(-15deg) scale(0);
+  animation: growLeaf 0.8s 0.5s ease-out forwards;
+}
+
+.leaf-left-bottom {
+  left: -16px;
+  top: 60px;
+  transform: rotate(-60deg) scale(0);
+  animation: growLeaf 0.8s 0.6s ease-out forwards;
+}
+
+.leaf-right-bottom {
+  right: -16px;
+  top: 55px;
+  transform: rotate(60deg) scale(0);
+  animation: growLeaf 0.8s 0.7s ease-out forwards;
+}
+
+.leaf-back {
+  left: 0;
+  top: 30px;
+  transform: rotate(10deg) scale(0);
+  animation: growLeaf 0.8s 0.5s ease-out forwards;
+  z-index: -1;
+}
+
+/* Dewdrops on leaves */
+.dewdrops {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9991;
+}
+
+.dewdrop {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+  animation: fadeInDrops 0.5s ease-out forwards;
+}
+
+.dewdrop-1 {
+  width: 4px;
+  height: 4px;
+  left: -12px;
+  top: 40px;
+  animation-delay: 1.2s;
+}
+
+.dewdrop-2 {
+  width: 3px;
+  height: 3px;
+  right: -10px;
+  top: 38px;
+  animation-delay: 1.4s;
+}
+
+.dewdrop-3 {
+  width: 5px;
+  height: 5px;
+  left: -5px;
+  top: 25px;
+  animation-delay: 1.6s;
+}
+
+/* Flower styling with variations */
+.flower {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  top: 5px;
+  left: calc(50% - 14px);
+  transform: scale(0);
+  opacity: 0;
+  animation: bloomFlower 0.8s 0.7s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flower center */
+.flower-center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 10;
+  background: radial-gradient(circle, #FFC107 0%, #FF9800 100%);
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
+/* Flower petals */
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: center bottom;
+  opacity: 0;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}
+
+/* Position each petal around the center */
+.petal-1 { transform: rotate(0deg) translateY(-7px) scale(0); animation: growPetal 0.4s 0.8s forwards; }
+.petal-2 { transform: rotate(45deg) translateY(-7px) scale(0); animation: growPetal 0.4s 0.85s forwards; }
+.petal-3 { transform: rotate(90deg) translateY(-7px) scale(0); animation: growPetal 0.4s 0.9s forwards; }
+.petal-4 { transform: rotate(135deg) translateY(-7px) scale(0); animation: growPetal 0.4s 0.95s forwards; }
+.petal-5 { transform: rotate(180deg) translateY(-7px) scale(0); animation: growPetal 0.4s 1s forwards; }
+.petal-6 { transform: rotate(225deg) translateY(-7px) scale(0); animation: growPetal 0.4s 1.05s forwards; }
+.petal-7 { transform: rotate(270deg) translateY(-7px) scale(0); animation: growPetal 0.4s 1.1s forwards; }
+.petal-8 { transform: rotate(315deg) translateY(-7px) scale(0); animation: growPetal 0.4s 1.15s forwards; }
+
+/* Flower colors */
+.flower-yellow .petal {
+  background: linear-gradient(to bottom, #FFEB3B, #FFC107);
+}
+
+.flower-yellow .flower-center {
+  background: radial-gradient(circle, #FF9800 0%, #F57C00 100%);
+}
+
+.flower-pink .petal {
+  background: linear-gradient(to bottom, #F48FB1, #EC407A);
+}
+
+.flower-pink .flower-center {
+  background: radial-gradient(circle, #E91E63 0%, #C2185B 100%);
+}
+
+.flower-blue .petal {
+  background: linear-gradient(to bottom, #81D4FA, #4FC3F7);
+}
+
+.flower-blue .flower-center {
+  background: radial-gradient(circle, #29B6F6 0%, #0288D1 100%);
+}
+
+.flower-orange .petal {
+  background: linear-gradient(to bottom, #FFB74D, #FF9800);
+}
+
+.flower-orange .flower-center {
+  background: radial-gradient(circle, #FF7043 0%, #E64A19 100%);
+}
+
+/* Particles that appear when plant grows */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* Particle colors */
+.flower-yellow-particle {
+  background: radial-gradient(circle, rgba(255, 235, 59, 0.8) 0%, rgba(255, 235, 59, 0) 70%);
+}
+
+.flower-pink-particle {
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.8) 0%, rgba(233, 30, 99, 0) 70%);
+}
+
+.flower-blue-particle {
+  background: radial-gradient(circle, rgba(3, 169, 244, 0.8) 0%, rgba(3, 169, 244, 0) 70%);
+}
+
+.flower-orange-particle {
+  background: radial-gradient(circle, rgba(255, 112, 67, 0.8) 0%, rgba(255, 112, 67, 0) 70%);
+}
+
+/* Particle movements */
+.particle-1 { 
+  top: 40%; 
+  left: 20%; 
+  animation: particleMove1 2.2s 0.2s forwards; 
+}
+.particle-2 { 
+  top: 60%; 
+  left: 80%; 
+  animation: particleMove2 2s 0.3s forwards; 
+}
+.particle-3 { 
+  top: 30%; 
+  left: 50%; 
+  animation: particleMove3 2.4s 0.4s forwards; 
+}
+.particle-4 { 
+  top: 70%; 
+  left: 30%; 
+  animation: particleMove4 2.2s 0.5s forwards; 
+}
+.particle-5 { 
+  top: 20%; 
+  left: 70%; 
+  animation: particleMove5 1.9s 0.6s forwards; 
+}
+.particle-6 { 
+  top: 50%; 
+  left: 40%; 
+  animation: particleMove6 2.1s 0.7s forwards; 
+}
+.particle-7 { 
+  top: 25%; 
+  left: 60%; 
+  animation: particleMove7 2.3s 0.5s forwards; 
+}
+.particle-8 { 
+  top: 45%; 
+  left: 25%; 
+  animation: particleMove8 2s 0.4s forwards; 
+}
+
+/* Cursor states */
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+.custom-cursor-follower.hidden {
+  opacity: 0;
+}
+
+.cursor-leaf.hidden {
+  opacity: 0;
+}
+
+/* Click effect */
+.custom-cursor.clicked {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(145deg, rgba(56, 142, 60, 0.9), rgba(76, 175, 80, 0.9));
+  box-shadow: 0 0 15px rgba(56, 142, 60, 0.8), inset 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.custom-cursor-follower.clicked {
+  border-color: rgba(56, 142, 60, 0.8);
+  transform: translate(-50%, -50%) scale(0.8) !important;
+  filter: drop-shadow(0 0 8px rgba(56, 142, 60, 0.6));
+}
+
+/* Hover effect for links and buttons */
+.custom-cursor.link-hovered {
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(145deg, rgba(165, 214, 167, 0.9), rgba(129, 199, 132, 0.9));
+  mix-blend-mode: normal;
+}
+
+.custom-cursor-follower.link-hovered {
+  width: 60px;
+  height: 60px;
+  border-width: 3px;
+  border-color: rgba(76, 175, 80, 0.8);
+  transition: width 0.3s, height 0.3s, border 0.3s;
+}
+
+/* Special element styles when cursor is hovering */
+.cursor-magnetic-active {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Special animations */
+@keyframes leafSway {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes growStem {
+  0% {
+    height: 0;
+    box-shadow: 0 0 0 rgba(76, 175, 80, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.7);
+  }
+  100% {
+    height: 90px;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+  }
+}
+
+@keyframes growLeaf {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) scale(1);
+  }
+}
+
+@keyframes showSegment {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes growPetal {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateY(-7px) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) translateY(-7px) scale(1);
+  }
+}
+
+@keyframes bloomFlower {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0 0 0 rgba(255, 152, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.7);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInDrops {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightGrow {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  30% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1.5);
+  }
+}
+
+/* Particle animations */
+@keyframes particleMove1 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.8; transform: translate(-15px, -20px) scale(1.2); }
+  80% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(-30px, -40px) scale(0); }
+}
+
+@keyframes particleMove2 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.7; transform: translate(20px, -15px) scale(1.1); }
+  80% { opacity: 0.4; }
+  100% { opacity: 0; transform: translate(35px, -35px) scale(0); }
+}
+
+@keyframes particleMove3 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.9; transform: translate(10px, -25px) scale(1.3); }
+  80% { opacity: 0.6; }
+  100% { opacity: 0; transform: translate(20px, -45px) scale(0); }
+}
+
+@keyframes particleMove4 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.8; transform: translate(-15px, -10px) scale(1); }
+  80% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(-25px, -30px) scale(0); }
+}
+
+@keyframes particleMove5 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.7; transform: translate(12px, -22px) scale(1.2); }
+  80% { opacity: 0.4; }
+  100% { opacity: 0; transform: translate(28px, -40px) scale(0); }
+}
+
+@keyframes particleMove6 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.9; transform: translate(-10px, -15px) scale(1.1); }
+  80% { opacity: 0.6; }
+  100% { opacity: 0; transform: translate(-25px, -35px) scale(0); }
+}
+
+@keyframes particleMove7 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.8; transform: translate(15px, -18px) scale(1.1); }
+  80% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(30px, -40px) scale(0); }
+}
+
+@keyframes particleMove8 {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.7; transform: translate(-12px, -25px) scale(1.2); }
+  80% { opacity: 0.4; }
+  100% { opacity: 0; transform: translate(-24px, -45px) scale(0); }
+}
+
+/* Glow effect on hover */
+.custom-cursor-follower.link-hovered {
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+  border-color: rgba(129, 199, 132, 0.9);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .custom-cursor, .custom-cursor-follower, .cursor-leaf, .cursor-trail, .plant-growth {
+    display: none;
+  }
+  
+  .custom-cursor-enabled * {
+    cursor: auto !important;
+  }
+} 

@@ -77,6 +77,7 @@ const Footer = () => {
               data-tooltip-content="Tap to copy"
               data-tooltip-id="tooltip"
               onClick={(e) => copyText(e)}
+              data-ccursor="lift"
             >
               <img src={images[el]} alt={el} />
               <h6 className="p-text btn-copy">
@@ -105,15 +106,15 @@ const Footer = () => {
 
       <form ref={form} onSubmit={sendEmail} className="app__footer-form app__flex">
         <div className="app__flex">
-          <input className="p-text" type="text" placeholder="Full Name" name="from_name" required />
+          <input className="p-text" type="text" placeholder="Full Name" name="from_name" required data-ccursor="noParallax" />
         </div>
         <div className="app__flex">
-          <input className="p-text" type="email" placeholder="Your Email" name="from_email" required />
+          <input className="p-text" type="email" placeholder="Your Email" name="from_email" required data-ccursor="noParallax" />
         </div>
         <div>
-          <textarea className="p-text" placeholder="Your Message" name="message" required />
+          <textarea className="p-text" placeholder="Your Message" name="message" required data-ccursor="noParallax" />
         </div>
-        <button type="submit" className="p-text">
+        <button type="submit" className="p-text" data-ccursor="lift">
           Send message
         </button>
       </form>

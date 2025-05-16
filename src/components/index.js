@@ -5,3 +5,4 @@ export { default as SpotlightSearch } from "./SpotlightSearch/SpotlightSearch";
 export { default as TabTitleChanger } from "./TabTitleChanger/TabTitleChanger";
 export { default as ShortcutPopup } from "./ShortcutPopup/ShortcutPopup";
 export { default as CustomCursor } from "./CustomCursor/CustomCursor";
+export { default as ScrollProgress } from "./ScrollProgress/ScrollProgress";

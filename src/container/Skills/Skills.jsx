@@ -19,7 +19,7 @@ const Skills = () => {
       <h2 className="head-text">Skills & Experience</h2>
 
       <div className="app__skills-container">
-      
+
         <motion.div className="app__skills-list" key="skills">
           {skills.map((skill) => (
             <motion.div
@@ -27,6 +27,7 @@ const Skills = () => {
               transition={{ duration: 0.5 }}
               className="app__skills-item app__flex"
               key={skill.name}
+              data-ccursor="lift"
             >
               <div className="app__flex" style={{ backgroundColor: skill.bgColor }}>
                 <img src={images[skill.imgName]} alt={skill.name} />

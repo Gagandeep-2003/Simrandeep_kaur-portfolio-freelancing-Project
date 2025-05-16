@@ -4,7 +4,7 @@ import { images } from "../../constants";
 import { data } from "../../data/about-data";
 import "./About.css";
 import Reveal from "../Reveal/Reveal";
-import Tilt from "react-tilty"; 
+import Tilt from "react-tilty";
 
 const About = () => {
   const [abouts, setabouts] = useState([]);
@@ -28,9 +28,10 @@ const About = () => {
             transition={{ duration: 0.3, type: "tween" }}
             className="app__profile-item"
             key={about.title + index}
+            data-ccursor="lift"
           >
             <img src={images[about.image]} alt={about.title} />
-          <Reveal> 
+          <Reveal>
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>

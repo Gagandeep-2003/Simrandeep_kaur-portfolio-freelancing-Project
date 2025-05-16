@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import ContextCursor from './ContextCursor';
+import ContextCursor from './ContextCursor.jsx';
 
 const CustomCursor = () => {
   // Using the context-cursor-master implementation with smooth scroll animation

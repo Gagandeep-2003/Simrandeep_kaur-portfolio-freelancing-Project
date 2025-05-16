@@ -1,12 +1,12 @@
 import React from 'react';
-import { data } from "../../data/work-data"; 
+import { data } from "../../data/work-data";
 import "./Projects.css";
 
 const Project = ({ title, subtitle }) => (
-  <div className="page14-inner">
+  <div className="page14-inner" data-ccursor="lift">
     <h1>{title}</h1>
     <div className="center14"></div>
-    <span className="subtitle">{subtitle}</span> 
+    <span className="subtitle">{subtitle}</span>
   </div>
 );
 

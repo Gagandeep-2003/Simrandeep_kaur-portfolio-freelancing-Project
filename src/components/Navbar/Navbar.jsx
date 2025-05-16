@@ -38,12 +38,13 @@ const Navbar = () => {
             ref={(el) => (navLinksRef.current[index] = el)}
           >
             <div></div>
-            <a 
+            <a
               onClick={() => {
                 // console.log(`Navigating to #${item}`);
                 lenis.scrollTo(`#${item}`);
-              }} 
+              }}
               href={`#${item}`}
+              data-ccursor
             >
               {item}
             </a>
@@ -51,19 +52,19 @@ const Navbar = () => {
         ))}
       </ul>
       <div className="app__navbar-cv">
-        <a href={simrancv} download="Simrandeep Kaur-CV" className="cv-link">
+        <a href={simrancv} download="Simrandeep Kaur-CV" className="cv-link" data-ccursor="lift">
           Download CV
         </a>
       </div>
       <div className="app__navbar-menu">
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
+        <HiMenuAlt4 onClick={() => setToggle(true)} data-ccursor="noParallax" />
         <div className={`app__navbar-list ${toggle ? "active" : ""}`}>
-          <HiX onClick={() => setToggle(false)} />
+          <HiX onClick={() => setToggle(false)} data-ccursor="noParallax" />
           <ul>
             {["home", "about", "work", "skills", "contact"].map((item, index) => (
               <li key={item}>
                 <div></div>
-                <a href={`#${item}`} onClick={() => setToggle(false)}>
+                <a href={`#${item}`} onClick={() => setToggle(false)} data-ccursor>
                   {item}
                 </a>
               </li>

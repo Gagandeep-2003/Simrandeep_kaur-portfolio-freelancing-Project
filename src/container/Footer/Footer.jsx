@@ -119,7 +119,7 @@ const Footer = () => {
         </button>
       </form>
 
-      <p className="copyright">Simrandeep Kaur &copy;2024</p>
+<p className="copyright">Simrandeep Kaur &copy;{new Date().getFullYear()}</p>
     </div>
   );
 };

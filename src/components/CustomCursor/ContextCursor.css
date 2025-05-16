@@ -1,0 +1,82 @@
+/* Custom cursor styles */
+:root {
+  --main-cursor-clr: rgba(200, 200, 200, 0.8);
+  --main-cursor-hover-clr: rgba(200, 200, 200, 0.5);
+  --ghost-shadow: 0 7px 15px rgba(200, 200, 200, 0.4);
+}
+
+/* Hide default cursor */
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+/* Main cursor */
+.c-cursor {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+  background-color: var(--main-cursor-clr);
+  transition: background-color 0.3s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-origin: center center;
+}
+
+/* Active cursor state */
+.c-cursor_active {
+  background-color: var(--main-cursor-hover-clr);
+  border-radius: 12px !important;
+}
+
+/* Lift effect active state */
+.c-cursor-lift_active {
+  background-color: rgba(200, 200, 200, 0.2);
+  border-radius: 12px !important;
+}
+
+/* Special element styles when cursor is hovering */
+[data-ccursor] {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease-out,
+              background-color 0.3s ease-out !important;
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Lift effect specific styles */
+[data-ccursor="lift"] {
+  transform-origin: center center;
+}
+
+[data-ccursor="lift"]:hover {
+  transform: scale(1.02);
+}
+
+/* Navbar specific styles */
+.app__navbar-links li a[data-ccursor] {
+  border-radius: 8px !important;
+}
+
+.app__navbar-cv a[data-ccursor] {
+  border-radius: 8px !important;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .c-cursor {
+    display: none;
+  }
+
+  .custom-cursor-enabled * {
+    cursor: auto !important;
+  }
+
+  [data-ccursor], [data-ccursor="lift"] {
+    transform: none !important;
+    transition: background-color 0.3s ease-out !important;
+  }
+}

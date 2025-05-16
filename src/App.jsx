@@ -1,6 +1,13 @@
 import "./App.css";
 import { Header, About, Work, Skills, Footer } from "./container";
-import { Navbar, TabSwitcher, SpotlightSearch, TabTitleChanger, CustomCursor } from "./components";
+import {
+  Navbar,
+  TabSwitcher,
+  SpotlightSearch,
+  TabTitleChanger,
+  CustomCursor,
+  ScrollProgress
+} from "./components";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import Project from "./components/Projects/Project";
 import LoadingAnimation from "./components/LoadingAnimation/LoadingAnimation";
@@ -49,12 +56,12 @@ const MainContent = () => {
       try {
         const skillsModule = await import('./data/skillsData');
         const projectsModule = await import('./data/projectsData');
-        
+
         // Check if data is available and set state
         if (skillsModule.default) {
           setSkillsData(skillsModule.default);
         }
-        
+
         if (projectsModule.default) {
           setProjectsData(projectsModule.default);
         }
@@ -62,20 +69,20 @@ const MainContent = () => {
         console.error('Error loading data:', error);
       }
     };
-    
+
     fetchData();
   }, []);
 
   return (
     <div className="app">
       <Navbar />
-      <TabTitleChanger 
+      <TabTitleChanger
         originalTitle="Simrandeep Kaur | Plant Pathologist"
         awayTitle="Missing you! Come back soon 👋"
       />
-      <SpotlightSearch 
+      <SpotlightSearch
         sections={sections}
-        skills={skillsData} 
+        skills={skillsData}
         works={projectsData}
       />
       <TabSwitcher sections={sections} />
@@ -109,6 +116,7 @@ const App = () => {
         <LoadingAnimation onComplete={handleLoadingComplete} />
       ) : (
         <>
+          <ScrollProgress />
           <ShortcutPopup isVisible={showShortcutPopup} onClose={handleClosePopup} />
           <ReactLenis
             root
